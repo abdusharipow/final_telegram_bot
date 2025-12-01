@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/abdusharipow/final_telegram_bot#readme",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "node-telegram-bot-api": "^0.66.0"
   },
   "devDependencies": {
