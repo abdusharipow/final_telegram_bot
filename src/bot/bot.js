@@ -1,17 +1,21 @@
 import TelegramBot from "node-telegram-bot-api";
 import dotenv from "dotenv";
+import onCommands from "./hendlers/message/onCommands.js";
+import onError from "./hendlers/message/onError.js";
+dotenv.config();
 
-dotenv.config()
+export const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
-export const bot = new TelegramBot(process.env.BOT_TOKEN, {polling: true})
 bot.on("message", function (msg) {
-    const chatId = msg.chat.id;
-    const firstName = msg.chat.first_name;
+  const chatId = msg.chat.id;
+  const firstname = msg.chat.first_name;
+  const text = msg.text;
 
+  if (text.startsWith("/")) {
+    return onCommands(msg);
+  }
 
-      bot.sendMessage(chatId, `Assalomu aleykum, ${firstName}`);
-} )
+  return onError();
+});
 
-console.log("Bot ishga tushdi... ");
-
-
+console.log("Bot ishga tushdi...");
