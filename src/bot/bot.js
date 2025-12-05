@@ -10,12 +10,12 @@ bot.on("message", function (msg) {
   const chatId = msg.chat.id;
   const firstname = msg.chat.first_name;
   const text = msg.text;
-
   if (text.startsWith("/")) {
     return onCommands(msg);
   }
 
   return onError();
+  
 });
 
 console.log("Bot ishga tushdi...");
